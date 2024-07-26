@@ -46,7 +46,8 @@ std::tuple<std::string, int> GetPersonInfo<std::tuple<std::string, int>>(int per
   }
 }
 
-/* 推荐的方法 */
+/* 推荐的方法
+ * 返回结构体，可以清晰地返回变量相关信息 */
 template<>
 PersonIndex GetPersonInfo<PersonIndex>(int person_type) {
   switch (person_type) {

@@ -7,7 +7,9 @@
 
 static bool s_finished = false;
 
+/* 工作函数 */
 void DoWork() {
+  /* 一个命名空间，其中定义了与时间有关的字面量操作符 */
   using namespace std::literals::chrono_literals;
 
   std::cout << "thread id: " << std::this_thread::get_id() << std::endl;
@@ -25,6 +27,7 @@ int main() {
 
   s_finished = true;
 
+  /* 阻塞当前主线程，直到工作线程结束 */
   worker.join();
   std::cout << "Finished!" << std::endl;
   std::cout << "thread id: " << std::this_thread::get_id() << std::endl;
