@@ -12,7 +12,7 @@ struct AllocationMetrics {
   uint32_t CurrentUsage() { return total_allocated - total_freed; }
 };
 
-static AllocationMetrics allocation_metrics;
+static AllocationMetrics s_allocation_metrics;
 
 void *operator new(size_t size) {
   allocation_metrics.total_allocated += size;

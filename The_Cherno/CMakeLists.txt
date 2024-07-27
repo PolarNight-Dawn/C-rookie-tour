@@ -9,3 +9,8 @@ target_link_libraries(Thread Threads::Threads)
 
 add_executable(Benchmaking 技巧篇/benchmaking.cpp)
 add_executable(Memory 技巧篇/memory_allocate.cpp)
+
+add_executable(Async 技巧篇/async.cpp)
+target_link_libraries(Async pthread)
+
+add_executable(String_view 技巧篇/string_view.cpp)

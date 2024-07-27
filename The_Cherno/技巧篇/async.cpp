@@ -8,31 +8,7 @@
 #include <vector>
 #include <mutex>
 
-class Timer {
- public:
-  Timer() {
-	m_start_time_point_ = std::chrono::high_resolution_clock::now();
-  }
-
-  ~Timer() {
-	stop();
-  }
-
-  void stop() {
-	auto end_time_point = std::chrono::high_resolution_clock::now();
-
-	auto start = std::chrono::time_point_cast<std::chrono::microseconds>(m_start_time_point_).time_since_epoch().count();
-	auto end = std::chrono::time_point_cast<std::chrono::microseconds>(end_time_point).time_since_epoch().count();
-
-	auto duration = end - start;
-	auto ms = duration * 0.001;
-
-	std::cout << duration << "us (" << ms << "ms)\n";
-  }
-
- private:
-  std::chrono::time_point<std::chrono::high_resolution_clock> m_start_time_point_;
-};
+#include "generate_tool_library.h"
 
 static std::mutex s_mutex;
 
@@ -50,14 +26,14 @@ int main() {
   long start = 1, end = 2000000000;
 
   {
-	Timer timer;
+	GTL::Timer timer;
 	long result = 0;
 	worker(start, end, result);
 	std::cout << "Sync:\n";
   }
 
   {
-	Timer timer;
+	GTL::Timer timer;
 
 	int num_threads = std::thread::hardware_concurrency();
 	std::vector<std::future<void>> futures;
