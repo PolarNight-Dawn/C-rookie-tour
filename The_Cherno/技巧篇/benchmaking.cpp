@@ -16,7 +16,7 @@ struct Vector2{
  * 配置切换到 Release 再进行分析，一定要确保你所分析的代码，在发布时是真正有意义的，因为你不会在调试时发布代码 */
 int main() {
   {
-	GTL::Timer timer;
+	gtl::Timer timer;
 
 	int value = 0;
 
@@ -29,7 +29,7 @@ int main() {
   std::cout << "Make Shared: \n";
   {
 	std::array<std::shared_ptr<Vector2>, 1000> shared_ptr;
-	GTL::Timer timer;
+	gtl::Timer timer;
 	for (auto & i : shared_ptr)
 	  i = std::make_shared<Vector2>();
   }
@@ -37,7 +37,7 @@ int main() {
   std::cout << "New Shared: \n";
   {
 	std::array<std::shared_ptr<Vector2>, 1000> shared_ptr;
-	GTL::Timer timer;
+	gtl::Timer timer;
 	for (auto & i : shared_ptr)
 	  i = std::shared_ptr<Vector2>(new Vector2());
   }
@@ -45,7 +45,7 @@ int main() {
   std::cout << "Make Unique: \n";
   {
 	std::array<std::unique_ptr<Vector2>, 1000> shared_ptr;
-	GTL::Timer timer;
+	gtl::Timer timer;
 	for (auto & i : shared_ptr)
 	  i = std::make_unique<Vector2>();
   }

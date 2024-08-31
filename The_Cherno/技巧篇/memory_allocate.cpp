@@ -15,13 +15,13 @@ struct AllocationMetrics {
 static AllocationMetrics s_allocation_metrics;
 
 void *operator new(size_t size) {
-  allocation_metrics.total_allocated += size;
+  s_allocation_metrics.total_allocated += size;
 
   return malloc(size);
 }
 
 void operator delete(void *memory, size_t size) {
-  allocation_metrics.total_freed += size;
+  s_allocation_metrics.total_freed += size;
 
   free(memory);
 }
@@ -31,7 +31,7 @@ struct Object{
 };
 
 static void PrintMemoryUsage() {
-  std::cout << "Memory Usage: " << allocation_metrics.CurrentUsage() << " bytes\n";
+  std::cout << "Memory Usage: " << s_allocation_metrics.CurrentUsage() << " bytes\n";
 }
 
 int main() {

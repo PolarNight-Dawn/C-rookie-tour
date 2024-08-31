@@ -47,7 +47,7 @@ int main() {
 
   {
 	std::cout << "String:\n";
-	GTL::Timer timer;
+	gtl::Timer timer;
 	int loop = 10000;
 	s_alloc_count = 0;
 	while (loop--) {

@@ -26,14 +26,14 @@ int main() {
   long start = 1, end = 2000000000;
 
   {
-	GTL::Timer timer;
+	gtl::Timer timer;
 	long result = 0;
 	worker(start, end, result);
 	std::cout << "Sync:\n";
   }
 
   {
-	GTL::Timer timer;
+	gtl::Timer timer;
 
 	int num_threads = std::thread::hardware_concurrency();
 	std::vector<std::future<void>> futures;

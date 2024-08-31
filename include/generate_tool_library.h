@@ -37,6 +37,6 @@ class Timer {
 };
 }
 
-namespace GTL = generate_tool_library;
+namespace gtl = generate_tool_library;
 
 #endif //C____GENERATE_TOOL_LIBRARY_H_
